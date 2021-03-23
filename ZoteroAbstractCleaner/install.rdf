@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+	<em:id>ZoteroAbstractCleaner@carter-tod.com</em:id>
+	<em:type>2</em:type> <!-- type=extension -->
+	<em:name>ZoteroAbstractCleaner</em:name>
+	<em:version>0.0.1</em:version>
+	<em:creator>David Tod</em:creator>
+	<em:description>Fixes line endings in an abstract, e.g. after pasting from Acrobat.</em:description>
+	<em:homepageURL>https://github.com/dcartertod/zotero-plugins</em:homepageURL>
+    <em:unpack>true</em:unpack>
+	
+    <em:targetApplication>
+      <Description>
+        <em:id>zotero@chnm.gmu.edu</em:id>
+        <em:minVersion>4.0</em:minVersion>
+        <em:maxVersion>5.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>juris-m@juris-m.github.io</em:id>
+        <em:minVersion>4.0</em:minVersion>
+        <em:maxVersion>5.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

@@ -1,0 +1,6 @@
+content	ZoteroAbstractCleaner				chrome/content/
+locale	ZoteroAbstractCleaner	en-US		chrome/locale/en-US/
+skin	ZoteroAbstractCleaner	default		chrome/skin/default/
+
+overlay	chrome://zotero/content/zoteroPane.xul	chrome://ZoteroAbstractCleaner/content/overlay.xul
+

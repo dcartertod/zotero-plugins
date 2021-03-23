@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://ZoteroAbstractCleaner/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ZoteroAbstractCleaner/locale/ZoteroAbstractCleaner.dtd">
+
+<overlay id="ZoteroAbstractCleaner-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- labels are defined in the dtd file -->
+	<menupopup id="zotero-itemmenu">
+		<menuitem id="zoteroabs" label="&ZoteroAbstractCleaner.abstract;"
+			oncommand="Zotero.ZoteroAbstractCleaner.fixAbstract();"/>
+	</menupopup>
+	
+	<!-- Include the main extension logic -->
+	<script src="chrome://zotero/content/include.js"/>
+	<script src="chrome://ZoteroAbstractCleaner/content/include.js"/>
+</overlay>
