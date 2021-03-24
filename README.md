@@ -1,6 +1,16 @@
 # zotero-plugins
 Terrifically small pieces of functionality. Just playing around and solving my own problems.
 
+ZoteroPreview
+===============
+
+This open source project is for adding a Preview tab with a citation preview for a particular item in Zotero (next to the "Related" tab) using your chosen bibliographic style.
+
+# Installing
+
+To install ZoteroPreview, download the latest version of ZoteroPreview.xpi from this GitHub repo. In **Zotero** , open Tools -> Add-ons. Then from the cogwheel, choose "Install add-on from File..".
+
+
 Zotero Abstract Cleaner
 =======================
 
