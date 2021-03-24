@@ -1,0 +1,6 @@
+content	zoteropreview				chrome/content/
+locale	zoteropreview	en-US		chrome/locale/en-US/
+skin	zoteropreview	default		chrome/skin/default/
+
+overlay	chrome://zotero/content/zoteroPane.xul	chrome://zoteropreview/content/overlay.xul
+

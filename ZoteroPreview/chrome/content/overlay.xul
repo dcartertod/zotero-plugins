@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://zoteropreview/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zoteropreview/locale/zoteropreview.dtd">
+
+<overlay id="zoteropreview-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<tabs id="zotero-editpane-tabs" class="zotero-editpane-tabs">
+		<tab id="zotero-editpane-preview-tab" label="&zoteropreview.menuitem;"/>
+	</tabs>
+	
+	<!-- chrome/content/zotero/itemPane.xul line 72 -->
+	<tabpanels id="zotero-view-item" class="zotero-view-item" onselect="Zotero.zoteropreview.getCitationPreview();" onfocus="Zotero.zoteropreview.getCitationPreview();">
+		<tabpanel id="preview-pane" class="preview-pane" orient="vertical">
+			<iframe id="zoteropreview-preview-box" flex="1" style="padding: 0 1em; background:white;width:100%;height:100%" overflow="auto" type="content"/>
+		</tabpanel>
+	</tabpanels>
+
+	<!-- Include the main extension logic -->
+	<script src="chrome://zotero/content/include.js"/>
+	<script src="chrome://zoteropreview/content/include.js"/>
+</overlay>
