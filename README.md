@@ -1,5 +1,5 @@
 # zotero-plugins
-Terrifically small pieces of functionality. Just playing around and solving my own problems.
+Terrifically small pieces of functionality. Just playing around and solving my own problems. Also, never really used Github before!
 
 ZoteroPreview
 ===============
