@@ -16,7 +16,7 @@ Zotero.zoteropreview = {
 		// https://www.zotero.org/support/dev/client_coding/javascript_api#managing_citations_and_bibliographies
 		var items = Zotero.getActiveZoteroPane().getSelectedItems();
 		
-		if (items.length == 1){
+		if (items.length == 1 && document.getElementById('zotero-view-tabbox').selectedIndex == 4){
 			var qc = Zotero.QuickCopy;
 			var format = Zotero.Prefs.get("export.quickCopy.setting");
 			var msg = "No bibliography style is choosen in the settings for QuickCopy.";
