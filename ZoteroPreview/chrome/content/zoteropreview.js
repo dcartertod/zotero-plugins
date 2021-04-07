@@ -19,7 +19,7 @@ Zotero.zoteropreview = {
 		if (items.length == 1 && document.getElementById('zotero-view-tabbox').selectedIndex == 4){
 			var qc = Zotero.QuickCopy;
 			var format = Zotero.Prefs.get("export.quickCopy.setting");
-			var msg = "No bibliography style is choosen in the settings for QuickCopy.";
+			var msg = "No bibliography style is chosen in the settings for QuickCopy.";
 			
 			// added a pane in overlay.xul
 			var iframe = document.getElementById('zoteropreview-preview-box');
