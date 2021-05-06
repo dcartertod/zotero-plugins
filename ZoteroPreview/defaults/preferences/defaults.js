@@ -1,1 +1,2 @@
+pref("extensions.zoteropreview.citationstyle", "");
 

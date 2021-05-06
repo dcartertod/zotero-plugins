@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://zotero-platform/content/preferences.css"?>
+<?xml-stylesheet href="chrome://zotero/skin/bibliography.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://zoteropreview/locale/zoteropreview.dtd">
+
+<!-- http://www.xulplanet.com/ was helpful -->
+
+<prefwindow id="zoteropreview-perf" title="&zoteropreview.stylechooser;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="styleChooser();" ondialogaccept="styleChanged();" ondialogcancel="styleCanceled();">
+	<prefpane label="&zoteropreview.stylechooser;" id="zoteropreview-perfpane">
+		<preferences>
+			<preference id="pref-zoteropreview-citationstyle" name="extensions.zoteropreview.citationstyle" type="string"/>
+		</preferences>
+		
+		<vbox id="zoteropreview-stylechooser-container">
+			<groupbox>
+				<caption label="&zoteropreview.stylelabel;"/>
+				<listbox id="style-listbox" onselect="styleChanged()"/>
+			</groupbox>
+		</vbox>
+	</prefpane>
+		
+	<script src="zoteropreview-pref.js"/>
+	<script src="chrome://zotero/content/include.js"/>
+	<script src="chrome://zoteropreview/content/include.js"/>
+
+</prefwindow>
