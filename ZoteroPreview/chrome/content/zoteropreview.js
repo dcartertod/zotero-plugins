@@ -48,7 +48,7 @@ Zotero.zoteropreview = new function() {
 			}
 			Zotero.debug("format is now: " + format);
 
-			var msg = "No bibliography style is choosen in the settings for QuickCopy.";
+			var msg = "No bibliography style is chosen in the settings for QuickCopy.";
 			
 			// added a pane in overlay.xul
 			var iframe = Zotero.getActiveZoteroPane().document.getElementById('zoteropreview-preview-box');
