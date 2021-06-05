@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- for my own edification this is not part of the .xpi file but is pointed to in install.rdf as updateURL-->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <rdf:Description about="urn:mozilla:extension:zoteropreview@carter-tod.com">
