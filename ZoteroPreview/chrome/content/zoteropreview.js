@@ -40,6 +40,8 @@ Zotero.zoteropreview = new function() {
 			var qc = Zotero.QuickCopy;
 			var format = Zotero.Prefs.get("export.quickCopy.setting");
 			var userpref = Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true);
+			// get the font size preference from the global setting
+			var fontSizePref = Zotero.Prefs.get('fontSize');
 			Zotero.debug("format is: " + format);
 			Zotero.debug("userpref is: " + userpref);
 			
@@ -60,6 +62,9 @@ Zotero.zoteropreview = new function() {
 			}
 			var biblio = qc.getContentFromItems(items, format);
 			msg = biblio.html;
+			// wrap the output in a div that has the font size preference
+			msg = "<div style=\"font-size: " + fontSizePref + "em\">" + msg + "</div>";
+			Zotero.debug(msg);
 
 			// https://github.com/zotero/zotero/blob/master/chrome/content/zotero/tools/cslpreview.js
 			// https://github.com/zotero/zotero/blob/master/chrome/content/zotero/tools/cslpreview.xul
