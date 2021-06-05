@@ -4,11 +4,12 @@
 	<em:id>zoteropreview@carter-tod.com</em:id>
 	<em:type>2</em:type> <!-- type=extension -->
 	<em:name>ZoteroPreview</em:name>
-	<em:version>0.0.1</em:version>
+	<em:version>0.0.5</em:version>
 	<em:creator>David Tod</em:creator>
 	<em:description>Citation preview pane for Zotero.</em:description>
 	<em:homepageURL>https://github.com/dcartertod/zotero-plugins</em:homepageURL>
-    <em:unpack>true</em:unpack>
+  <em:unpack>true</em:unpack>
+  <em:updateURL>https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroPreview/zoteropreview-update.rdf</em:updateURL>
 	
     <em:targetApplication>
       <Description>
