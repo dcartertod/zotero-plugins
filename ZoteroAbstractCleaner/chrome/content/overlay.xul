@@ -6,11 +6,13 @@
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 
+		
 	<!-- labels are defined in the dtd file -->
-	<menupopup id="zotero-itemmenu">
-		<menuitem id="zoteroabs" label="&ZoteroAbstractCleaner.abstract;"
-			oncommand="Zotero.ZoteroAbstractCleaner.fixAbstract();"/>
-	</menupopup>
+		<menupopup id="zotero-itemmenu">
+			<menuitem id="zoteroabs" label="&ZoteroAbstractCleaner.abstract;"
+				oncommand="Zotero.ZoteroAbstractCleaner.fixAbstract();"/>
+		</menupopup>
+		
 	
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>

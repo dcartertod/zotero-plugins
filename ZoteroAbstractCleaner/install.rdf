@@ -6,10 +6,11 @@
 	<em:name>ZoteroAbstractCleaner</em:name>
 	<em:version>0.0.1</em:version>
 	<em:creator>David Tod</em:creator>
-	<em:description>Fixes line endings in an abstract, e.g. after pasting from Acrobat.</em:description>
+	<em:description>Fixes line endings in an abstract, e.g. after pasting from Acrobat. Right-click an item or items to use.</em:description>
 	<em:homepageURL>https://github.com/dcartertod/zotero-plugins</em:homepageURL>
-    <em:unpack>true</em:unpack>
-	
+  <em:unpack>true</em:unpack>
+	<em:updateURL>https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroAbstractCleaner/zoteroabstract-update.rdf</em:updateURL>
+
     <em:targetApplication>
       <Description>
         <em:id>zotero@chnm.gmu.edu</em:id>
