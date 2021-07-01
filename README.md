@@ -16,7 +16,7 @@ To install ZoteroPreview, download the latest version of ZoteroPreview.xpi from 
 Zotero Abstract Cleaner
 =======================
 
-This project is for fixing line endings in abstracts in Zotero, for example, after copying and pasting from Adobe Acrobat. It adds a menu item in the right-click contextual menu for items. This means that you can select multiple items and apply this function to all of them.
+This project is for fixing line endings in abstracts in Zotero, for example, after copying and pasting from Adobe Acrobat. It adds a menu item in the right-click contextual menu for items called "Fix Line Endings in Abstract". This means that you can select multiple items and apply this function to all of them.
 
 ## Installing
 
