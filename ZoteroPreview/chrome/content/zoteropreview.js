@@ -84,7 +84,7 @@ Zotero.zoteropreview = new function() {
 		// Zotero.debug(window.title);
         var prefWindow = window.openDialog('chrome://zoteropreview/content/styleChooser.xul',
             'zoteropreview-stylechooser',
-            'chrome,titlebar,toolbar,centerscreen,modal');
+            'chrome,titlebar,toolbar,centerscreen,dialog=yes');
     };
 	
 };
