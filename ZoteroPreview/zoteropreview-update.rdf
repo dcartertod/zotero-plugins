@@ -8,13 +8,13 @@ so you update this file when there's a new release to point to the new release -
             <rdf:Seq>
                 <rdf:li>
                     <rdf:Description>
-                        <em:version>0.0.5</em:version>
+                        <em:version>0.0.6</em:version>
                         <em:targetApplication>
                             <rdf:Description>
                                 <em:id>zotero@chnm.gmu.edu</em:id>
                                 <em:minVersion>5.0.0</em:minVersion>
                                 <em:maxVersion>5.*</em:maxVersion>
-                                <em:updateLink>https://github.com/dcartertod/zotero-plugins/releases/download/0.0.5/ZoteroPreview.xpi</em:updateLink>
+                                <em:updateLink>https://github.com/dcartertod/zotero-plugins/raw/main/ZoteroPreview.xpi</em:updateLink>
                             </rdf:Description>
                         </em:targetApplication> 
 
@@ -23,7 +23,7 @@ so you update this file when there's a new release to point to the new release -
                                 <em:id>juris-m@juris-m.github.io</em:id>
                                 <em:minVersion>4.999</em:minVersion>
                                 <em:maxVersion>5.*</em:maxVersion>
-                                <em:updateLink>https://github.com/dcartertod/zotero-plugins/releases/download/0.0.5/ZoteroPreview.xpi</em:updateLink>
+                                <em:updateLink>https://github.com/dcartertod/zotero-plugins/raw/main/ZoteroPreview.xpi</em:updateLink>
                             </rdf:Description>
                         </em:targetApplication>
 
