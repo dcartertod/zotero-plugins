@@ -4,7 +4,7 @@
 	<em:id>ZoteroAbstractCleaner@carter-tod.com</em:id>
 	<em:type>2</em:type> <!-- type=extension -->
 	<em:name>ZoteroAbstractCleaner</em:name>
-	<em:version>0.0.6</em:version>
+	<em:version>0.0.7</em:version>
 	<em:creator>David Tod</em:creator>
 	<em:description>Fixes line endings in an abstract, e.g., after pasting from Acrobat. Right-click an item (or multiple-items) in the main pane and choose "Fix Line Endings in Abstract".</em:description>
 	<em:homepageURL>https://github.com/dcartertod/zotero-plugins</em:homepageURL>
