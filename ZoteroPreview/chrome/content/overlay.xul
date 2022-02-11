@@ -9,8 +9,8 @@
 	<!-- http://www.xulplanet.com/ was helpful -->
 	
 	
-	<hbox id="zotero-items-pane" class="virtualized-table-container" onselect="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onclick="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onfocus="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');">
-	</hbox>
+<!-- 	<hbox id="zotero-items-pane" class="virtualized-table-container" onselect="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onclick="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onfocus="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');">
+	</hbox> -->
 
 	<tabs id="zotero-editpane-tabs" class="zotero-editpane-tabs">
 		<tab id="zotero-editpane-preview-tab" label="&zoteropreview.menuitem;"/>
