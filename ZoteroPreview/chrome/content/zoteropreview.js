@@ -41,7 +41,7 @@ Zotero.zoteropreview = new function() {
 		// probably a massive hack, but it works, oh and zotfile does something like this it turns out
 		// do not know how to hook into chrome/content/zotero/itemPane.js for "viewItem" code
 		// so just listen for a select - tried all kinds of things before this
-/* 		if(window.ZoteroPane) {
+		if(window.ZoteroPane && Zotero.version.indexOf('5')==0) {
 			var doc = window.ZoteroPane.document;
 			window.ZoteroPane.itemsView.onSelectionChange.addListener(Zotero.zoteropreview.getCitationPreview,'zoteropreview1');
 			//window.ZoteroPane.collectionsView.itemTreeView.onSelect.addListener(Zotero.zoteropreview.listenerTesting,'zoteropreview2');
@@ -65,7 +65,7 @@ Zotero.zoteropreview = new function() {
 				//Zotero.debug('zoteropreview: click new');
 				Zotero.zoteropreview.getCitationPreview('click new');
 			});
-		} */
+		}
   
 	};
 	
