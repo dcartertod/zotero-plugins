@@ -8,12 +8,16 @@
 
 	<!-- http://www.xulplanet.com/ was helpful -->
 	
+	
+	<hbox id="zotero-items-pane" class="virtualized-table-container" onselect="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onclick="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');" onfocus="Zotero.zoteropreview.getCitationPreview('zotero-items-pane');">
+	</hbox>
+
 	<tabs id="zotero-editpane-tabs" class="zotero-editpane-tabs">
 		<tab id="zotero-editpane-preview-tab" label="&zoteropreview.menuitem;"/>
 	</tabs>
 	
 	<!-- chrome/content/zotero/itemPane.xul line 72 -->
-	<tabpanels id="zotero-view-item" class="zotero-view-item" onselect="Zotero.zoteropreview.getCitationPreview();" onfocus="Zotero.zoteropreview.getCitationPreview();">
+	<tabpanels id="zotero-view-item" class="zotero-view-item" onselect="Zotero.zoteropreview.getCitationPreview('zotero-view-item');" onclick="Zotero.zoteropreview.getCitationPreview('zotero-view-item');" onfocus="Zotero.zoteropreview.getCitationPreview('zotero-view-item');">
 		<tabpanel id="preview-pane" class="preview-pane" orient="vertical">
 			<vbox style="width:100%;">
 			<iframe id="zoteropreview-preview-box" style="padding: 0 1em; background:white;width:100%;height:95%" overflow="auto" type="content"/>
@@ -26,7 +30,7 @@
 	<!-- menupopup id="zotero-itemmenu">
        	<menuitem id="zoteropreview-options" label="Preview Prefs" oncommand="Zotero.zoteropreview.openPreferenceWindow();"/>
 	</menupopup -->
-	
+
 
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>
