@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://zoteropreview/skin/overlay.css" type="text/css"?>
-<!DOCTYPE window SYSTEM "chrome://zoteropreview/locale/zoteropreview.dtd">
+
+<!DOCTYPE overlay [
+	<!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd"> %globalDTD;
+	<!ENTITY % zoteroDTD SYSTEM "chrome://zotero/locale/zotero.dtd"> %zoteroDTD;
+	<!ENTITY % zoteroPreviewDTD SYSTEM "chrome://zoteropreview/locale/zoteropreview.dtd"> %zoteroPreviewDTD;
+]>
 
 <overlay id="zoteropreview-overlay"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -21,8 +26,12 @@
 		<tabpanel id="preview-pane" class="preview-pane" orient="vertical">
 			<vbox style="width:100%;">
 			<iframe id="zoteropreview-preview-box" style="padding: 0 1em; background:white;width:100%;height:95%" overflow="auto" type="content"/>
-			<label id="zoteropreview-options" class="text-link"
-					onclick="Zotero.zoteropreview.openPreferenceWindow();">&#9881; &zoteropreview.stylechooser;</label>
+			<button id="zoteropreview-options"  class="zotero-tb-button"
+					onclick="Zotero.zoteropreview.openPreferenceWindow();">&#9881; &zoteropreview.stylechooser;</button>
+			<button id="zoteropreview-options1" class="zotero-tb-button" 
+					onclick="Zotero.zoteropreview.copyCitation(true);">Copy Citation</button>
+			<button id="zoteropreview-options2" class="zotero-tb-button"
+					onclick="Zotero.zoteropreview.copyCitation(false);">Copy Bibliography</button>
 			</vbox>
 		</tabpanel>
 	</tabpanels>
