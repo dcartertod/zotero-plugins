@@ -99,7 +99,7 @@ Zotero.zoteropreview = new function() {
 			var format = qc.getFormatFromURL(qc.lastActiveURL);
 			format = Zotero.QuickCopy.unserializeSetting(format);
 
-			Zotero.debug("zoteropreview: " + format);
+			Zotero.debug("zoteropreview: " + JSON.stringify(format));
 			
 			if (format.mode == ""){
 				format.mode = "bibliography";
@@ -115,15 +115,16 @@ Zotero.zoteropreview = new function() {
 				Zotero.debug("format: " + format["id"]);
 				Zotero.debug("setting userpref");
 				format.id = userpref;
+				format.mode = "bibliography";
 			}
-			Zotero.debug("format is now: " + format);
+			Zotero.debug("format is now: " + JSON.stringify(format));
 
-			var msg = "No bibliography style is chosen in the settings for QuickCopy.";
+			var msg = "No bibliography style is chosen in the settings for QuickCopy. Set Preview preference.";
 			
 			// added a pane in overlay.xul
 			var iframe = Zotero.getActiveZoteroPane().document.getElementById('zoteropreview-preview-box');
 
-			if (format.id == "") {
+			if (format.id == "" || format.mode == "export") {
 			   iframe.contentDocument.documentElement.innerHTML = msg;
 			   this.openPreferenceWindow();
 			   return;
