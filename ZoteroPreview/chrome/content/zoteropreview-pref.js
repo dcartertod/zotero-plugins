@@ -91,6 +91,7 @@ var styleChanged = function() {
 		var selectedItem = document.getElementById("style-listbox").selectedItem;
 		lastSelectedStyle = selectedItem.getAttribute('value');
 		Zotero.Prefs.set('extensions.zoteropreview.citationstyle', lastSelectedStyle, true);
+		this.currentStyle = lastSelectedStyle;
 		this.getCitationPreview();
 	}.bind(Zotero.zoteropreview);
 

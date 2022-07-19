@@ -7,7 +7,14 @@
 
 <!-- http://www.xulplanet.com/ was helpful -->
 
-<prefwindow id="zoteropreview-perf" title="&zoteropreview.stylechooser;" buttons="accept,cancel" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="styleChooser();" ondialogaccept="styleChanged();" ondialogcancel="styleCanceled();">
+<prefwindow 
+	id="zoteropreview-perf" 
+	title="&zoteropreview.stylechooser;" 
+	buttons="accept,cancel" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	onload="styleChooser();" 
+	ondialogaccept="styleChanged();" 
+	ondialogcancel="styleCanceled();">
 	<prefpane label="&zoteropreview.stylechooser;" id="zoteropreview-perfpane">
 		<preferences>
 			<preference id="pref-zoteropreview-citationstyle" name="extensions.zoteropreview.citationstyle" type="string"/>
