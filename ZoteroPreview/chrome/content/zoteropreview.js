@@ -152,7 +152,8 @@ Zotero.zoteropreview = new function() {
 			);
 			styleEngine.free();
 
-			msg += '<hr><h3>' + Zotero.getString('styles.editor.output.individualCitations') + '</h3>' + citations;
+			msg =  '<h4 style="border-bottom:1px solid #eeeeee">' + style.title + "</h4>" + msg;
+			msg += '<h3 style="border-top:1px solid #eeeeee">' + Zotero.getString('styles.editor.output.individualCitations') + '</h3>' + citations;
 			// msg += "<p><a href=\"#\" onclick=\"Zotero.zoteropreview.copyCitation(false);\">" + Zotero.getString('general.copy') + "</a></p>";
 			Zotero.debug("zoteropreview: " + msg);
 
@@ -213,7 +214,7 @@ Zotero.zoteropreview = new function() {
 		Zotero_File_Interface.copyItemsToClipboard(
 			 	items, format.id, locale, format.contentType == 'html', asCitations
 		);
-	}
+	};
 	
 };
 
