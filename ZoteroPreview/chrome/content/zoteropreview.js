@@ -93,7 +93,7 @@ Zotero.zoteropreview = new function() {
 		// see https://www.zotero.org/support/dev/client_coding/javascript_api#managing_citations_and_bibliographies
 		var items = Zotero.getActiveZoteroPane().getSelectedItems();
 		
-		if (items.length == 1 && Zotero.getActiveZoteroPane().document.getElementById('zotero-view-tabbox').selectedIndex == 4){
+		if (items.length == 1 && Zotero.getActiveZoteroPane().document.getElementById('zotero-view-tabbox').selectedTab.id == 'zotero-editpane-preview-tab'){
 			Zotero.debug("zoteropreview: updating citation");
 			var qc = Zotero.QuickCopy;
 			var format = qc.getFormatFromURL(qc.lastActiveURL);
