@@ -1,0 +1,18 @@
+{
+    "addons": {
+      "zoteropreview@carter-tod.com": {
+        "updates": [
+          {
+            "version": "0.7.0",
+            "update_link": "https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroPreview7.xpi",
+            "applications": {
+              "zotero": {
+                "strict_min_version": "6.999"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+  

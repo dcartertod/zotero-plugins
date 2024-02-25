@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "ZoteroPreview",
+	"version": "0.7.0",
+	"description": "Citation preview pane for Zotero.",
+	"homepage_url": "https://github.com/dcartertod/zotero-plugins",
+	"applications": {
+		"zotero": {
+			"id": "zoteropreview@carter-tod.com",
+			"update_url": "https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroPreview7/zoteropreview7-updates.json",
+			"strict_min_version": "6.999",
+			"strict_max_version": "7.0.*"
+		}
+	}
+}

@@ -1,0 +1,31 @@
+<!--
+    zoteropreview
+    prefs.xhtml
+    adapted from Wiley Yu (zotmoov)
+-->
+
+
+<vbox id="zotero-prefpane-zotero-preview" onload="Zotero.zoteropreview.Prefs.init();">
+    <groupbox>
+        <vbox>
+            <label><html:h2>Pick Preview Style</html:h2></label>
+            <hbox>
+                <menulist id="zotero-preview-style-menulist" native="true" 
+                    preference="extensions.zoteropreview.citationstyle" 
+                    oncommand="Zotero.zoteropreview.Prefs.styleChanged(this.selectedItem.value);">
+                    <menupopup>
+                    </menupopup>
+                </menulist>
+            </hbox>
+        </vbox>
+    </groupbox>
+    <groupbox>
+        <label><html:h2>Position</html:h2></label>
+        <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.position">
+            <radio id="extensions-zoteropreview-position-top" value="zotero-item-pane-header" label="Top" 
+                    onclick="Zotero.zoteropreview.addToWindow('zotero-item-pane-header');"/>
+            <radio id="extensions-zoteropreview-position-bottom" value="zotero-editpane-related" label="Bottom" 
+                    onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-related');"/>
+        </radiogroup>
+    </groupbox>
+</vbox>
