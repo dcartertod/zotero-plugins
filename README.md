@@ -10,6 +10,11 @@ This project adds a Preview tab with a citation preview for a particular item in
 
 ![Image of standard panel with preview tab](https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroPreview/zotero-preview.PNG)
 
+## For Zotero 7
+There's [a new version for Zotero 7](https://github.com/dcartertod/zotero-plugins/releases) only.
+
+![Image of standard panel in v7 with preview under the title](https://github.com/dcartertod/zotero-plugins/raw/main/version7UI)
+
 ## Installing
 
 To install ZoteroPreview, download the latest version of ZoteroPreview.xpi from this GitHub repo. In **Zotero** , open Tools -> Add-ons. Then from the cogwheel, choose "Install add-on from File..".
