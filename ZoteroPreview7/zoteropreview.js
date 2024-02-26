@@ -5,6 +5,8 @@ Zotero.zoteropreview = {
 	initialized: false,
 	addedElementIDs: [],
 	currentStyle: null,
+	currentItem: null,
+	currentItemID: null,
 	_notifierID: null,
 	
 	init({ id, version, rootURI }) {
@@ -19,7 +21,7 @@ Zotero.zoteropreview = {
 		Zotero.debug("zoteropreview: " + msg);
 	},
 
-	addToWindow(positionpref) {
+	async addToWindow(positionpref) {
 		try {
 			//this.log(window);
 			if (typeof positionpref === 'undefined'){
@@ -90,7 +92,7 @@ Zotero.zoteropreview = {
 	
 	async main() {
 		// this.log('adding notifier');
-		this._notifierID = Zotero.Notifier.registerObserver(this, ['item'], 'itemBox');
+		this._notifierID = Zotero.Notifier.registerObserver(this, ['item','itemtree'], 'itemBox');
 		// this.log(this._notifierID);
 		
 		// Retrieve a global pref
@@ -100,7 +102,7 @@ Zotero.zoteropreview = {
 			var doc = Zotero.getActiveZoteroPane().document;
 			doc.addEventListener("select", function(){
 				//Zotero.debug('zoteropreview: select');
-				Zotero.zoteropreview.getCitationPreview('select in the main part');
+				Zotero.zoteropreview.getCitationPreview('select');
 			});
 			// doc.addEventListener("click", function(){
 			// 	//Zotero.debug('zoteropreview: click');
@@ -137,9 +139,14 @@ Zotero.zoteropreview = {
 		}
 	},
 
-	notify(event, _type, ids) {
-		if (event != 'modify') return;
-		this.log('notified');
+	notify(event, _type, ids, extraData) {
+		Zotero.debug('not sure if there is an event for selecting an item in the main pane');
+		this.log(event);
+		this.log(_type);
+		this.log(ids);
+		Zotero.debug(ids);
+		this.log(extraData);
+		if (event != 'modify' && event != 'refresh') return;
 		this.addToWindow();
 	},
 
@@ -166,6 +173,7 @@ Zotero.zoteropreview = {
 		browserWindow.Zotero_File_Interface.copyItemsToClipboard(
 			 	items, format.id, locale, format.contentType == 'html', asCitations
 		);
+		this.log('copy done');
 	},
 
 	async getCitationPreview (debugmsg){
@@ -176,6 +184,13 @@ Zotero.zoteropreview = {
 		var items = Zotero.getActiveZoteroPane().getSelectedItems();
 		
 		if (items.length == 1){
+			if (this.currentItemID == items[0].id && debugmsg == 'select'){
+				this.log('Same item and event');
+				this.log('getCitationPreview done early');
+				this.log('===================');
+				return;	
+			}
+			this.currentItemID = items[0].id;
 			//this.log("updating citation");
 			var qc = Zotero.QuickCopy;
 			var format = qc.getFormatFromURL(qc.lastActiveURL);
@@ -215,9 +230,17 @@ Zotero.zoteropreview = {
 			var clipboard = " <span id='zpbibcopy' title='Copy' style=\"z-index: 999; position: relative; top: -.25em; left: -.125em\">📄<span style=\"position: relative; top: .25em; left: -.75em\">📄</span></span>";
 			
 			this.log('first bit');
+			// this next line seems to take about 700ms on average
 			var biblio = qc.getContentFromItems(items, format);
 			this.log('biblio done');
 			msg = biblio.html;
+			// wee bit of a speed up, I think
+			if (this.currentItem == msg){
+				this.log('getCitationPreview done early');
+				this.log('===================');
+				return;
+			}
+			this.currentItem = msg;
 			msg = msg.replace('</div>', clipboard + "</div>");
 
 			//this.log("first done is \r\n" + msg);
