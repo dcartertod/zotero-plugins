@@ -8,7 +8,13 @@ Zotero.zoteropreview.Prefs =
     {
         Zotero.zoteropreview.log('prefs init');
         this.populateStyleList();
-    },
+
+		var fontPref = Zotero.Prefs.get('extensions.zoteropreview.fontsize',true);
+		document.getElementById('zotero-preview-fontsize').value=fontPref;
+
+		var spacingPref = Zotero.Prefs.get('extensions.zoteropreview.spacing',true);
+		document.getElementById('zotero-preview-spacing').value=spacingPref;
+	},
 
     populateStyleList() {
 		Zotero.zoteropreview.log('populating list');

@@ -153,6 +153,11 @@ Zotero.zoteropreview = {
 		this.log('copy done');
 	},
 
+	setPref(pref,value){
+		Zotero.Prefs.set(pref, value, true);
+		this.getCitationPreview('post pref set: ' + pref + " to " + value);
+	},
+
 	async getCitationPreview (debugmsg){
 		this.log("=========================")
 		this.log('getCitationPreview started: ' + debugmsg);
@@ -181,6 +186,12 @@ Zotero.zoteropreview = {
 
 			var userpref = Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true);
 			var showpref = Zotero.Prefs.get('extensions.zoteropreview.whatToShow', true);
+			var userFontPref = Zotero.Prefs.get('extensions.zoteropreview.fontsize', true);
+			var spacingPref = Zotero.Prefs.get('extensions.zoteropreview.spacing', true);
+
+			if (typeof spacingPref == 'undefined'){
+				spacingPref = "1.5";
+			}
 
 			if (debugmsg == 'zpboth' || debugmsg == 'zpintext' || debugmsg == 'zpbib'){
 				showpref = debugmsg;
@@ -194,6 +205,10 @@ Zotero.zoteropreview = {
 			var fontSizePref = Zotero.Prefs.get('fontSize');
 			// Zotero.debug("format is: " + format);
 			// this.log("userpref is: " + userpref);
+
+			if (userFontPref != ""){
+				fontSizePref = userFontPref;
+			}
 			
 			// if the userpref is set, then make that the preview format
 			if ( userpref != "" ){
@@ -298,6 +313,7 @@ Zotero.zoteropreview = {
 			}
 			// this.log('setting copy for zpbibcopy to false');
 			if (targetDiv.querySelector('#zpbibcopy') != null){
+				targetDiv.querySelector('.csl-bib-body').style.lineHeight=spacingPref;
 				targetDiv.querySelector('#zpbibcopy').onclick = () => Zotero.zoteropreview.copyCitation(false);
 			}
 		}

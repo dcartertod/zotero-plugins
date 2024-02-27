@@ -24,12 +24,14 @@
         <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.position">
             <radio id="extensions-zoteropreview-position-top" value="zotero-item-pane-header" label="Top" 
                     onclick="Zotero.zoteropreview.addToWindow('zotero-item-pane-header');"/>
+            <radio id="extensions-zoteropreview-position-afterInfo" value="zotero-editpane-item-box" label="After Info" 
+                    onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-item-box');"/>
             <radio id="extensions-zoteropreview-position-bottom" value="zotero-editpane-related" label="Bottom" 
                     onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-related');"/>
         </radiogroup>
     </groupbox>
     <groupbox>
-        <label><html:h2>Show</html:h2></label>
+        <label><html:h2>Display</html:h2></label>
         <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.whatToShow">
             <radio id="extensions-zoteropreview-whatToShow-both" value="zpboth" label="Both" 
                     onclick="Zotero.zoteropreview.getCitationPreview('zpboth');"/>
@@ -39,4 +41,22 @@
                     onclick="Zotero.zoteropreview.getCitationPreview('zpintext');"/>
         </radiogroup>
     </groupbox>
+
+    <groupbox>
+        <label><html:h2>Display</html:h2></label>
+        <hbox>
+            <hbox align="center">
+            <label value="Relative Font Size" control="zotero-preview-fontsize"/>
+            <html:input class="html-input" id="zotero-preview-fontsize" type="number" min="0.2" max="3" step="0.1" size="2" data-preference="extensions.zoteropreview.fontsize"
+                onchange="Zotero.zoteropreview.setPref('extensions.zoteropreview.fontsize',this.value);"/>
+                </hbox>
+            </hbox>
+        <hbox>
+            <hbox align="center">
+            <label value="Line Spacing" control="zotero-preview-spacing"/>
+            <html:input class="html-input" id="zotero-preview-spacing" type="number" min="1" max="3" step="0.1" size="2" data-preference="extensions.zoteropreview.spacing"
+                onchange="Zotero.zoteropreview.setPref('extensions.zoteropreview.spacing',this.value);"/>
+                </hbox>
+            </hbox>
+        </groupbox>
 </vbox>
