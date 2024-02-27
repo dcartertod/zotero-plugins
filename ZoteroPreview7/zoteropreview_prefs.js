@@ -10,9 +10,15 @@ Zotero.zoteropreview.Prefs =
         this.populateStyleList();
 
 		var fontPref = Zotero.Prefs.get('extensions.zoteropreview.fontsize',true);
+		if (fontPref == "" || typeof fontPref == 'undefined'){
+			fontPref = "1";
+		}
 		document.getElementById('zotero-preview-fontsize').value=fontPref;
 
 		var spacingPref = Zotero.Prefs.get('extensions.zoteropreview.spacing',true);
+		if (spacingPref == " " || typeof spacingPref == 'undefined'){
+			spacingPref = "1.5";
+		}
 		document.getElementById('zotero-preview-spacing').value=spacingPref;
 	},
 
