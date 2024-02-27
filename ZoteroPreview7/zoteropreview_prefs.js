@@ -70,7 +70,7 @@ Zotero.zoteropreview.Prefs =
 			selectIndex = 0;
 		}
 
-		Zotero.debug(document.getElementById('zotero-prefpane-zotero-preview').outerHTML);
+		// otero.debug(document.getElementById('zotero-prefpane-zotero-preview').outerHTML);
 
 		// Has to be async to work properly
 		// window.setTimeout(function () {

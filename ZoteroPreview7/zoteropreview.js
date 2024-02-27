@@ -1,3 +1,4 @@
+
 Zotero.zoteropreview = {
 	id: null,
 	version: null,
@@ -39,6 +40,14 @@ Zotero.zoteropreview = {
 				// Add a div to the main Zotero pane just below the article title (for now)
 				zpdiv = Zotero.getActiveZoteroPane().document.createElement('div');
 				zpdiv.id = 'zotero-preview';
+
+				// zpdiv = MozXULElement.parseXULToFragment(`
+				// <collapsible-section data-l10n-id="section-zotero-preview" data-pane="zotero-preview">
+				// 	<html:div class="body" id="zotero-preview">
+				// 	</html:div>
+				// 	</collapsible-section>
+				// `);
+				Zotero.debug(zpdiv);
 
 				this.storeAddedElement(zpdiv);
 			}
@@ -104,38 +113,6 @@ Zotero.zoteropreview = {
 				//Zotero.debug('zoteropreview: select');
 				Zotero.zoteropreview.getCitationPreview('select');
 			});
-			// doc.addEventListener("click", function(){
-			// 	//Zotero.debug('zoteropreview: click');
-			// 	Zotero.zoteropreview.getCitationPreview('click on the main part');
-			// });
-			// doc.addEventListener("focus", function(){
-			// 	//Zotero.debug('zoteropreview: focus');
-			// 	Zotero.zoteropreview.getCitationPreview('focus on the main part');
-			// });
-			// doc.getElementById('zotero-items-tree').addEventListener("focus", function(){
-			// 	//Zotero.debug('zoteropreview: focus new');
-			// 	Zotero.zoteropreview.getCitationPreview('focus on the list');
-			// });
-			// doc.getElementById('zotero-items-tree').addEventListener("click", function(){
-			// 	//Zotero.debug('zoteropreview: click new');
-			// 	Zotero.zoteropreview.getCitationPreview('click on the list');
-			// });
-			// doc.getElementById('zotero-editpane-item-box').addEventListener("change", function(){
-			// 		//Zotero.debug('zoteropreview: click new');
-			// 		Zotero.zoteropreview.getCitationPreview('change on meta-data in zotero-view-item-container');
-			// 	});
-			// doc.getElementById('zotero-item-pane').addEventListener("focus", function(){
-			// 	//Zotero.debug('zoteropreview: focus new');
-			// 	Zotero.zoteropreview.getCitationPreview('focus on an item');
-			// });
-			// doc.getElementById('zotero-items-tree').addEventListener("blur", function(){
-			// 	//Zotero.debug('zoteropreview: focus new');
-			// 	Zotero.zoteropreview.getCitationPreview('blur on an item');
-			// });
-			// doc.getElementById('zotero-item-pane').addEventListener("load", function(){
-			// 	//Zotero.debug('zoteropreview: focus new');
-			// 	Zotero.zoteropreview.getCitationPreview('load on an item');
-			// });
 		}
 	},
 
@@ -178,7 +155,7 @@ Zotero.zoteropreview = {
 
 	async getCitationPreview (debugmsg){
 		this.log("=========================")
-		this.log('getCitationPreview started ' + debugmsg);
+		this.log('getCitationPreview started: ' + debugmsg);
 		
 		// see https://www.zotero.org/support/dev/client_coding/javascript_api#managing_citations_and_bibliographies
 		var items = Zotero.getActiveZoteroPane().getSelectedItems();
@@ -203,6 +180,16 @@ Zotero.zoteropreview = {
 			}
 
 			var userpref = Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true);
+			var showpref = Zotero.Prefs.get('extensions.zoteropreview.whatToShow', true);
+
+			if (debugmsg == 'zpboth' || debugmsg == 'zpintext' || debugmsg == 'zpbib'){
+				showpref = debugmsg;
+			}
+
+			this.log('show: ' + showpref);
+
+			// let icon = getCSSItemTypeIcon('duplicate');
+
 			// get the font size preference from the global setting
 			var fontSizePref = Zotero.Prefs.get('fontSize');
 			// Zotero.debug("format is: " + format);
@@ -225,49 +212,61 @@ Zotero.zoteropreview = {
 			   	Zotero.Utilities.Internal.openPreferences('zotero-prefpane-zotero-preview');
 			   	return;
 			}
-
-			// the copy symbol. combination of unicode and styles shifting spans slightly
-			var clipboard = " <span id='zpbibcopy' title='Copy' style=\"z-index: 999; position: relative; top: -.25em; left: -.125em\">📄<span style=\"position: relative; top: .25em; left: -.75em\">📄</span></span>";
 			
 			this.log('first bit');
-			// this next line seems to take about 700ms on average
-			var biblio = qc.getContentFromItems(items, format);
-			this.log('biblio done');
-			msg = biblio.html;
-			// wee bit of a speed up, I think
-			if (this.currentItem == msg){
-				this.log('getCitationPreview done early');
-				this.log('===================');
-				return;
+
+			var clipSVG =  "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"black\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 3V0H1V13H4V16H15V3H12ZM2 1H11V12H2V1ZM14 15H5V13H12V4H14V15Z\" fill=\"context-fill\"/></svg>"
+
+			if (showpref == 'zpboth' || showpref == 'zpbib'){
+				// the copy symbol. combination of unicode and styles shifting spans slightly
+				var clipboard = " <span id='zpbibcopy' title='Copy'>" + clipSVG + "</span>";
+		
+				// this next line seems to take about 700ms on average
+				var biblio = qc.getContentFromItems(items, format);
+				this.log('biblio done');
+				msg = biblio.html;
+				// wee bit of a speed up, I think
+				// if (this.currentItem == msg){
+				// 	this.log('getCitationPreview done early');
+				// 	this.log('===================');
+				// 	return;
+				// }
+				this.currentItem = msg;
+				msg = msg.replace('</div>', clipboard + "</div>");
 			}
-			this.currentItem = msg;
-			msg = msg.replace('</div>', clipboard + "</div>");
-
-			//this.log("first done is \r\n" + msg);
-
-			var locale = format.locale ? format.locale : Zotero.Prefs.get('export.quickCopy.locale');
-			
-			this.log("format is (after locale) : " + JSON.stringify(format));
-			
-			var style = Zotero.Styles.get(format.id);
-			var styleEngine = style.getCiteProc(locale, 'html');
-			
-			var citations = styleEngine.previewCitationCluster(
-				{
-					citationItems: items.map(item => ({ id: item.id })),
-					properties: {}
-				},
-				[], [], "html"
-			);
-			styleEngine.free();
 
 			// msg =  '<h4 style="border-bottom:1px solid #eeeeee">' + style.title + "</h4>" + msg;
-			msg += '<hr style="color:#cccccc; width: 25%; margin-left: 0;"/>' + citations;
+			if (showpref == "zpboth"){
+				msg += '<hr style="color:#cccccc; width: 25%; margin-left: 0;"/>'
+			}
 			
-			// slightly different approach here, using absolute on the inner span. The above is probably more robust.
-			clipboard = " <span id='zpcitecopy' title='Copy' style=\"z-index: 999; position: relative; top: -.25em; left: -.125em\">📄<span style=\"position: absolute; top: .25em; left: .25em\">📄</span></span>";
-			msg += clipboard;
-			this.log("after getting the individual in text: \r\n" + msg);
+			if (showpref == 'zpboth' || showpref == 'zpintext'){
+			//this.log("first done is \r\n" + msg);
+
+				var locale = format.locale ? format.locale : Zotero.Prefs.get('export.quickCopy.locale');
+				
+				this.log("format is (after locale) : " + JSON.stringify(format));
+				
+				var style = Zotero.Styles.get(format.id);
+				var styleEngine = style.getCiteProc(locale, 'html');
+				
+				var citations = styleEngine.previewCitationCluster(
+					{
+						citationItems: items.map(item => ({ id: item.id })),
+						properties: {}
+					},
+					[], [], "html"
+				);
+				styleEngine.free();
+				if (showpref == 'zpintext'){
+					msg="";
+				}
+				msg += citations;
+				// slightly different approach here, using absolute on the inner span. The above is probably more robust.
+				clipboard = " <span id='zpcitecopy' title='Copy'>" + clipSVG + "</span>";
+				msg += clipboard;
+				this.log("after getting the individual in text: \r\n" + msg);
+			}
 
 			// wrap the output in a div that has the font size preference, and a bottom border
 			msg = "<div style=\"font-size: " + fontSizePref + "em; border-bottom: 2px solid #cccccc; padding-left: 5%; padding-bottom: 2px;\">" + msg + "</div>";
@@ -294,9 +293,13 @@ Zotero.zoteropreview = {
 				}
 			}
 			// this.log('setting copy for zpcitecopy to true');
-			Zotero.getActiveZoteroPane().document.getElementById('zpcitecopy').onclick = () => Zotero.zoteropreview.copyCitation(true);
+			if (targetDiv.querySelector('#zpcitecopy') != null){
+				targetDiv.querySelector('#zpcitecopy').onclick = () => Zotero.zoteropreview.copyCitation(true);
+			}
 			// this.log('setting copy for zpbibcopy to false');
-			Zotero.getActiveZoteroPane().document.getElementById('zpbibcopy').onclick = () => Zotero.zoteropreview.copyCitation(false);
+			if (targetDiv.querySelector('#zpbibcopy') != null){
+				targetDiv.querySelector('#zpbibcopy').onclick = () => Zotero.zoteropreview.copyCitation(false);
+			}
 		}
 		this.log('getCitationPreview done');
 		this.log('===================');

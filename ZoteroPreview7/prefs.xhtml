@@ -28,4 +28,15 @@
                     onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-related');"/>
         </radiogroup>
     </groupbox>
+    <groupbox>
+        <label><html:h2>Show</html:h2></label>
+        <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.whatToShow">
+            <radio id="extensions-zoteropreview-whatToShow-both" value="zpboth" label="Both" 
+                    onclick="Zotero.zoteropreview.getCitationPreview('zpboth');"/>
+            <radio id="extensions-zoteropreview-whatToShow-bib" value="zpbib" label="Bibliography Only" 
+                    onclick="Zotero.zoteropreview.getCitationPreview('zpbib');"/>
+            <radio id="extensions-zoteropreview-whatToShow-intext" value="zpintext" label="In-text Citation Only" 
+                    onclick="Zotero.zoteropreview.getCitationPreview('zpintext');"/>
+        </radiogroup>
+    </groupbox>
 </vbox>
