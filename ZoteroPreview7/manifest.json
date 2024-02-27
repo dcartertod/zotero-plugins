@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "ZoteroPreview",
-	"version": "0.7.2",
+	"version": "0.7.3",
 	"description": "Citation preview pane for Zotero.",
 	"homepage_url": "https://github.com/dcartertod/zotero-plugins",
 	"applications": {
