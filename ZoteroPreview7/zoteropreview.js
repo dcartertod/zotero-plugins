@@ -234,7 +234,7 @@ Zotero.zoteropreview = {
 
 			if (showpref == 'zpboth' || showpref == 'zpbib'){
 				// the copy symbol. combination of unicode and styles shifting spans slightly
-				var clipboard = " <span id='zpbibcopy' title='Copy'>" + clipSVG + "</span>";
+				var clipboard = " <span id='zpbibcopy' style='cursor: pointer;' title='Copy or use ctrl + shift + C'>" + clipSVG + "</span>";
 		
 				// this next line seems to take about 700ms on average
 				var biblio = qc.getContentFromItems(items, format);
@@ -278,7 +278,7 @@ Zotero.zoteropreview = {
 				}
 				msg += citations;
 				// slightly different approach here, using absolute on the inner span. The above is probably more robust.
-				clipboard = " <span id='zpcitecopy' title='Copy'>" + clipSVG + "</span>";
+				clipboard = " <span id='zpcitecopy' style='cursor: pointer;' title='Copy or use ctrl + shift + A'>" + clipSVG + "</span>";
 				msg += clipboard;
 				this.log("after getting the individual in text: \r\n" + msg);
 			}
