@@ -29,29 +29,33 @@ Zotero.zoteropreview = {
 				positionpref = Zotero.Prefs.get('extensions.zoteropreview.position', true);
 			}
 
-			var target = Zotero.getActiveZoteroPane().document.getElementById(positionpref);
+			var mainDocument = Zotero.getActiveZoteroPane().document;
+
+			var target = mainDocument.getElementById(positionpref);
 			this.log(target);
 
-			var zpdiv = Zotero.getActiveZoteroPane().document.getElementById('zotero-preview');
+			var zpdiv = mainDocument.getElementById('zotero-preview');
 			this.log(zpdiv);
 
 			if (zpdiv == null){
 				this.log('adding div')
 				// Add a div to the main Zotero pane just below the article title (for now)
-				zpdiv = Zotero.getActiveZoteroPane().document.createElement('div');
+				zpdiv = mainDocument.createElement('div');
 				zpdiv.id = 'zotero-preview';
+				
+				zpdivContainer = mainDocument.createXULElement("collapsible-section");
+				zpdivContainer.id='zotero-preview-container';
+				zpdivContainer.style='--open-height: auto;';
+				zpdivContainer.open="";
+				zpdivContainer.label='Preview';
+				zpdivContainer.dataset.pane="preview";
+				zpdivContainer.appendChild(zpdiv);
 
-				// zpdiv = MozXULElement.parseXULToFragment(`
-				// <collapsible-section data-l10n-id="section-zotero-preview" data-pane="zotero-preview">
-				// 	<html:div class="body" id="zotero-preview">
-				// 	</html:div>
-				// 	</collapsible-section>
-				// `);
-				Zotero.debug(zpdiv);
+				// Zotero.debug(zpdiv);
 
-				this.storeAddedElement(zpdiv);
+				this.storeAddedElement(zpdivContainer);
 			}
-			target.after(zpdiv);
+			target.after(zpdivContainer);
 			this.log('store')
 
 			this.getCitationPreview('addtowindow');		
@@ -305,16 +309,16 @@ Zotero.zoteropreview = {
 					//this.log("setting message");
 
 					targetDiv.innerHTML = msg;	
+					// this.log('setting copy for zpcitecopy to true');
+					if (targetDiv.querySelector('#zpcitecopy') != null){
+						targetDiv.querySelector('#zpcitecopy').onclick = () => Zotero.zoteropreview.copyCitation(true);
+					}
+					// this.log('setting copy for zpbibcopy to false');
+					if (targetDiv.querySelector('#zpbibcopy') != null){
+						targetDiv.querySelector('.csl-bib-body').style.lineHeight=spacingPref;
+						targetDiv.querySelector('#zpbibcopy').onclick = () => Zotero.zoteropreview.copyCitation(false);
+					}
 				}
-			}
-			// this.log('setting copy for zpcitecopy to true');
-			if (targetDiv.querySelector('#zpcitecopy') != null){
-				targetDiv.querySelector('#zpcitecopy').onclick = () => Zotero.zoteropreview.copyCitation(true);
-			}
-			// this.log('setting copy for zpbibcopy to false');
-			if (targetDiv.querySelector('#zpbibcopy') != null){
-				targetDiv.querySelector('.csl-bib-body').style.lineHeight=spacingPref;
-				targetDiv.querySelector('#zpbibcopy').onclick = () => Zotero.zoteropreview.copyCitation(false);
 			}
 		}
 		this.log('getCitationPreview done');
