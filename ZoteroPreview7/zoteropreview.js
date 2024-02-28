@@ -47,19 +47,29 @@ Zotero.zoteropreview = {
 				positionpref = Zotero.Prefs.get('extensions.zoteropreview.position', true);
 			}
 
+			this.log(positionpref);
+
 			var mainDocument = Zotero.getActiveZoteroPane().document;
 
 			var target = mainDocument.getElementById(positionpref);
 			this.log(target);
 
-			var zpdiv = mainDocument.getElementById('zotero-preview-container');
-			this.log(zpdiv);
+			var zpdivContainer = mainDocument.getElementById('zotero-preview-container');
+			Zotero.debug('zpdivContainer done');
 
+			// it appears that if we move a collapsible element, it loses it's contents
+			this.log('zpdiv');
+			var zpdiv = mainDocument.getElementById('zotero-preview');
 			if (zpdiv == null){
-				this.log('adding div')
-				// Add the div, and put it into a collapsible container
+				this.log('adding zpdiv');
 				zpdiv = mainDocument.createElement('div');
 				zpdiv.id = 'zotero-preview';
+				this.storeAddedElement(zpdiv);
+			}
+			Zotero.debug('zpdiv done');
+
+			if (zpdivContainer == null){
+				this.log('adding zpdivContainer')
 				
 				zpdivContainer = mainDocument.createXULElement("collapsible-section");
 				zpdivContainer.id='zotero-preview-container';
@@ -67,13 +77,13 @@ Zotero.zoteropreview = {
 				zpdivContainer.open="";
 				zpdivContainer.label='Preview';
 				zpdivContainer.dataset.pane="preview";
-				zpdivContainer.appendChild(zpdiv);
 
 				this.log('adding span');
 				this.log('storing elements');
 
 				// Add a stylesheet to the main Zotero pane - based on make-it-red
 				// see _collapsibleSection.scss
+				// this is how the icons are done
 				let link1 = mainDocument.createElement('link');
 				this.log('link1');
 				link1.id = 'zotero-preview-stylesheet';
@@ -85,9 +95,14 @@ Zotero.zoteropreview = {
 				this.storeAddedElement(link1);
 
 				this.storeAddedElement(zpdivContainer);
-				this.storeAddedElement(zpdiv);
 			}
+
+			this.log('appending container to target')
 			target.after(zpdivContainer);
+
+			// basic order of operations thing here. add the div after adding the container to the main document
+			this.log('appending zpdiv to zpdivContainer');
+			zpdivContainer.appendChild(zpdiv);
 			// this.addIcon();
 			this.log('store')
 
@@ -121,7 +136,7 @@ Zotero.zoteropreview = {
 			doc.getElementById(id)?.remove();
 		}
 		try {
-			doc.querySelector('#zotero-preview')?.remove();
+			doc.querySelector('#zotero-preview-container')?.remove();
 		}
 		catch(err){
 			this.log(err);
@@ -153,6 +168,7 @@ Zotero.zoteropreview = {
 		}
 	},
 
+	// the way this works is that you register with the Zotero Notifier, which then calls the "notify" function
 	notify(event, _type, ids, extraData) {
 		Zotero.debug('not sure if there is an event for selecting an item in the main pane');
 		this.log(event);
