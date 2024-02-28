@@ -1,0 +1,9 @@
+#zotero-preview-container .head .title::before{
+    content: ' ';
+    width: 20px;
+    height: 16px;
+    background: url("view.svg") no-repeat center;
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+    fill: blue;
+    stroke: blue;
+}

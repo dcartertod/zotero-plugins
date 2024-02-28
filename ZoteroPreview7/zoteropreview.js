@@ -22,9 +22,27 @@ Zotero.zoteropreview = {
 		Zotero.debug("zoteropreview: " + msg);
 	},
 
+	// this was an approach that worked, but since Zotero itself uses stylesheets, I went with that
+	// the ::before selector isn't available in JavaScript
+	addIcon(){
+		var mainDocument = Zotero.getActiveZoteroPane().document;
+		if (mainDocument.getElementById('zpicon') == null){
+			var icon = mainDocument.createElement('span');
+			icon.innerHTML=" ";
+			icon.id='zpicon';
+			icon.style='width: 16px; height: 16px; background: url("chrome://zotero/skin/16/universal/view.svg") no-repeat center; -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;fill: var(--accent-blue);stroke: var(--accent-blue);';
+
+			this.log('added span');
+
+			mainDocument.querySelector('#zotero-preview-container .head .title').prepend(icon);
+			this.storeAddedElement(icon);
+		}
+	},
+
 	async addToWindow(positionpref) {
 		try {
 			//this.log(window);
+			// the prefs.xhtml has the values of the containers representing the position
 			if (typeof positionpref === 'undefined'){
 				positionpref = Zotero.Prefs.get('extensions.zoteropreview.position', true);
 			}
@@ -34,12 +52,12 @@ Zotero.zoteropreview = {
 			var target = mainDocument.getElementById(positionpref);
 			this.log(target);
 
-			var zpdiv = mainDocument.getElementById('zotero-preview');
+			var zpdiv = mainDocument.getElementById('zotero-preview-container');
 			this.log(zpdiv);
 
 			if (zpdiv == null){
 				this.log('adding div')
-				// Add a div to the main Zotero pane just below the article title (for now)
+				// Add the div, and put it into a collapsible container
 				zpdiv = mainDocument.createElement('div');
 				zpdiv.id = 'zotero-preview';
 				
@@ -51,11 +69,26 @@ Zotero.zoteropreview = {
 				zpdivContainer.dataset.pane="preview";
 				zpdivContainer.appendChild(zpdiv);
 
-				// Zotero.debug(zpdiv);
+				this.log('adding span');
+				this.log('storing elements');
+
+				// Add a stylesheet to the main Zotero pane - based on make-it-red
+				// see _collapsibleSection.scss
+				let link1 = mainDocument.createElement('link');
+				this.log('link1');
+				link1.id = 'zotero-preview-stylesheet';
+				link1.type = 'text/css';
+				link1.rel = 'stylesheet';
+				link1.href = this.rootURI + 'style.css';
+				mainDocument.documentElement.appendChild(link1);
+				this.log('link1');
+				this.storeAddedElement(link1);
 
 				this.storeAddedElement(zpdivContainer);
+				this.storeAddedElement(zpdiv);
 			}
 			target.after(zpdivContainer);
+			// this.addIcon();
 			this.log('store')
 
 			this.getCitationPreview('addtowindow');		
