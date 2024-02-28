@@ -283,7 +283,7 @@ Zotero.zoteropreview = {
 			
 			this.log('first bit');
 
-			var clipSVG =  "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"black\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 3V0H1V13H4V16H15V3H12ZM2 1H11V12H2V1ZM14 15H5V13H12V4H14V15Z\" fill=\"context-fill\"/></svg>"
+			var clipSVG = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V0H1V13H4V16H15V3H12ZM2 1H11V12H2V1ZM14 15H5V13H12V4H14V15Z" fill="#cc9200"/></svg>`;
 
 			if (showpref == 'zpboth' || showpref == 'zpbib'){
 				// the copy symbol. combination of unicode and styles shifting spans slightly
@@ -337,7 +337,7 @@ Zotero.zoteropreview = {
 			}
 
 			// wrap the output in a div that has the font size preference, and a bottom border
-			msg = "<div style=\"font-size: " + fontSizePref + "em; border-bottom: 2px solid #cccccc; padding-left: 5%; padding-bottom: 2px;\">" + msg + "</div>";
+			msg = `<div style="font-size: ${fontSizePref}em; border-bottom: 1px solid #ddd; padding-left: 5px; padding-bottom: 5px;">${msg}</div>`;
 			// Zotero.debug(msg);
 
 			// https://github.com/zotero/zotero/blob/master/chrome/content/zotero/tools/cslpreview.js
