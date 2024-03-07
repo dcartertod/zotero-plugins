@@ -4,11 +4,14 @@
     adapted from Wiley Yu (zotmoov)
 -->
 
+<linkset>
+    <html:link rel="localization" href="zotero-preview.ftl"/>
+</linkset>
 
 <vbox id="zotero-prefpane-zotero-preview" onload="Zotero.zoteropreview.Prefs.init();">
     <groupbox>
         <vbox>
-            <label><html:h2>Pick Preview Style</html:h2></label>
+            <label><html:h2 data-l10n-id="zotero-preview-settings-title"></html:h2></label>
             <hbox>
                 <menulist id="zotero-preview-style-menulist" native="true" 
                     preference="extensions.zoteropreview.citationstyle" 
@@ -20,40 +23,40 @@
         </vbox>
     </groupbox>
     <groupbox>
-        <label><html:h2>Position</html:h2></label>
+        <label><html:h2 data-l10n-id="zotero-preview-settings-position"></html:h2></label>
         <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.position">
-            <radio id="extensions-zoteropreview-position-top" value="zotero-item-pane-header" label="Top" 
+            <radio id="extensions-zoteropreview-position-top" value="zotero-item-pane-header" data-l10n-id="zotero-preview-settings-position-top" 
                     onclick="Zotero.zoteropreview.addToWindow('zotero-item-pane-header');"/>
-            <radio id="extensions-zoteropreview-position-afterInfo" value="zotero-editpane-item-box" label="After Info" 
+            <radio id="extensions-zoteropreview-position-afterInfo" value="zotero-editpane-item-box" data-l10n-id="zotero-preview-settings-position-afterinfo" 
                     onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-item-box');"/>
-            <radio id="extensions-zoteropreview-position-bottom" value="zotero-editpane-related" label="Bottom" 
+            <radio id="extensions-zoteropreview-position-bottom" value="zotero-editpane-related" data-l10n-id="zotero-preview-settings-position-bottom"
                     onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-related');"/>
         </radiogroup>
     </groupbox>
     <groupbox>
-        <label><html:h2>Display</html:h2></label>
+        <label><html:h2 data-l10n-id="zotero-preview-settings-display"></html:h2></label>
         <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.whatToShow">
-            <radio id="extensions-zoteropreview-whatToShow-both" value="zpboth" label="Both" 
+            <radio id="extensions-zoteropreview-whatToShow-both" value="zpboth" data-l10n-id="zotero-preview-settings-whatToShow-both" 
                     onclick="Zotero.zoteropreview.getCitationPreview('zpboth');"/>
-            <radio id="extensions-zoteropreview-whatToShow-bib" value="zpbib" label="Bibliography Only" 
+            <radio id="extensions-zoteropreview-whatToShow-bib" value="zpbib" data-l10n-id="zotero-preview-settings-whatToShow-bib"
                     onclick="Zotero.zoteropreview.getCitationPreview('zpbib');"/>
-            <radio id="extensions-zoteropreview-whatToShow-intext" value="zpintext" label="In-text Citation Only" 
+            <radio id="extensions-zoteropreview-whatToShow-intext" value="zpintext" data-l10n-id="zotero-preview-settings-whatToShow-intext" 
                     onclick="Zotero.zoteropreview.getCitationPreview('zpintext');"/>
         </radiogroup>
     </groupbox>
 
     <groupbox>
-        <label><html:h2>Display</html:h2></label>
+        <label><html:h2 data-l10n-id="zotero-preview-settings-display-space"></html:h2></label>
         <hbox>
             <hbox align="center">
-            <label value="Relative Font Size" control="zotero-preview-fontsize"/>
+            <label data-l10n-id="zotero-preview-settings-display-fontsize" control="zotero-preview-fontsize"/>
             <html:input class="html-input" id="zotero-preview-fontsize" type="number" min="0.2" max="3" step="0.1" size="2" data-preference="extensions.zoteropreview.fontsize"
                 onchange="Zotero.zoteropreview.setPref('extensions.zoteropreview.fontsize',this.value);"/>
                 </hbox>
             </hbox>
         <hbox>
             <hbox align="center">
-            <label value="Line Spacing" control="zotero-preview-spacing"/>
+            <label data-l10n-id="zotero-preview-settings-display-linespacing" control="zotero-preview-spacing"/>
             <html:input class="html-input" id="zotero-preview-spacing" type="number" min="1" max="3" step="0.1" size="2" data-preference="extensions.zoteropreview.spacing"
                 onchange="Zotero.zoteropreview.setPref('extensions.zoteropreview.spacing',this.value);"/>
                 </hbox>

@@ -70,13 +70,17 @@ Zotero.zoteropreview = {
 
 			if (zpdivContainer == null){
 				this.log('adding zpdivContainer')
+
+				mainDocument.ownerGlobal.MozXULElement.insertFTLIfNeeded('zotero-preview.ftl');
 				
 				zpdivContainer = mainDocument.createXULElement("collapsible-section");
 				zpdivContainer.id='zotero-preview-container';
 				zpdivContainer.style='--open-height: auto;';
 				zpdivContainer.open="";
-				zpdivContainer.label='Preview';
+				zpdivContainer.label='Previewx';
 				zpdivContainer.dataset.pane="preview";
+				zpdivContainer.setAttribute('data-l10n-id', 'zotero-preview-pane-title');
+
 
 				this.log('adding span');
 				this.log('storing elements');
@@ -137,6 +141,7 @@ Zotero.zoteropreview = {
 		}
 		try {
 			doc.querySelector('#zotero-preview-container')?.remove();
+			doc.querySelector('[href="zotero-preview.ftl"]')?.remove();
 		}
 		catch(err){
 			this.log(err);
