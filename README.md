@@ -27,6 +27,9 @@ This project is for fixing line endings in abstracts in Zotero, for example, aft
 
 [Download Abstract Cleaner](https://github.com/dcartertod/zotero-plugins/releases/download/0.1.6/ZoteroAbstractCleaner.xpi)
 
+## For Zotero 7
+There's [a new version for Zotero 7](https://github.com/dcartertod/zotero-plugins/ZoteroAbstractCleaner7.xpi) only.
+
 ## Installing
 
 To install Zotero Abstract Cleaner, download ZoteroAbstractCleaner.xpi from this GitHub repo. In **Zotero** , open Tools -> Add-ons. Then from the cogwheel choose "Install add-on from File..".
