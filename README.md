@@ -6,7 +6,7 @@ ZoteroPreview
 
 This project adds a Preview tab with a citation preview for a particular item in Zotero (next to the "Related" tab) using your chosen bibliographic style.
 
-[Download ZoteroPreview](https://github.com/dcartertod/zotero-plugins/releases/download/0.1.6/ZoteroPreview.xpi)
+[Download ZoteroPreview for version 6](https://github.com/dcartertod/zotero-plugins/releases/download/0.1.6/ZoteroPreview.xpi)
 
 ![Image of standard panel with preview tab](https://raw.githubusercontent.com/dcartertod/zotero-plugins/main/ZoteroPreview/zotero-preview.PNG)
 
@@ -14,6 +14,8 @@ This project adds a Preview tab with a citation preview for a particular item in
 There's [a new version for Zotero 7](https://github.com/dcartertod/zotero-plugins/releases) only. Settings for this version are in the main Zotero settings, under the Edit menu.
 
 ![Image of standard panel in v7 with preview under the title](https://github.com/dcartertod/zotero-plugins/raw/main/version7UI)
+
+In May 2024, [a very similar feature](https://github.com/zotero/zotero/pull/3791) was added natively to Zotero 7.
 
 ## Installing
 
