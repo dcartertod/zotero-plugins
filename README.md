@@ -15,7 +15,7 @@ There's [a new version for Zotero 7](https://github.com/dcartertod/zotero-plugin
 
 ![Image of standard panel in v7 with preview under the title](https://github.com/dcartertod/zotero-plugins/raw/main/version7UI)
 
-In May 2024, [a very similar feature](https://github.com/zotero/zotero/pull/3791) was added natively to Zotero 7.
+In May 2024, [a very similar feature](https://github.com/zotero/zotero/pull/3791) was added natively to Zotero 7, which you can access in Settings, or by right-clicking the header.
 
 ## Installing
 
