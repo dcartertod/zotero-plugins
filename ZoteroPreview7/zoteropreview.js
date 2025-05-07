@@ -77,7 +77,7 @@ Zotero.zoteropreview = {
 				zpdivContainer.id='zotero-preview-container';
 				zpdivContainer.style='--open-height: auto;';
 				zpdivContainer.open="";
-				zpdivContainer.label='Previewx';
+				zpdivContainer.label='Preview';
 				zpdivContainer.dataset.pane="preview";
 				zpdivContainer.setAttribute('data-l10n-id', 'zotero-preview-pane-title');
 
