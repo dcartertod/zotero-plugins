@@ -15,11 +15,11 @@ zotero-preview-settings-position-bottom =
     .label = Bottom
 
 zotero-preview-settings-display = Display
-zotero-preview-settings-whatToShow-both =
+zotero-preview-settings-whattoshow-both =
     .label = Both
-zotero-preview-settings-whatToShow-bib =
+zotero-preview-settings-whattoshow-bib =
     .label = Bibliography Only
-zotero-preview-settings-whatToShow-intext =
+zotero-preview-settings-whattoshow-intext =
     .label = In-text Citation Only
 
 zotero-preview-settings-display-space = Spacing and Size

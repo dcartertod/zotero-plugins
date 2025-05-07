@@ -15,11 +15,11 @@ zotero-preview-settings-position-bottom =
     .label = El pie
 
 zotero-preview-settings-display = Mostrar
-zotero-preview-settings-whatToShow-both =
+zotero-preview-settings-whattoshow-both =
     .label = Ambos
-zotero-preview-settings-whatToShow-bib =
+zotero-preview-settings-whattoshow-bib =
     .label = Sólo bibliografía
-zotero-preview-settings-whatToShow-intext =
+zotero-preview-settings-whattoshow-intext =
     .label = Sólo citas en el texto
 
 zotero-preview-settings-display-space = Espaciado y tamaño

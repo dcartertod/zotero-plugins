@@ -243,7 +243,7 @@ Zotero.zoteropreview = {
 			}
 
 			var userpref = Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true);
-			var showpref = Zotero.Prefs.get('extensions.zoteropreview.whatToShow', true);
+			var showpref = Zotero.Prefs.get('extensions.zoteropreview.whattoshow', true);
 			var userFontPref = Zotero.Prefs.get('extensions.zoteropreview.fontsize', true);
 			var spacingPref = Zotero.Prefs.get('extensions.zoteropreview.spacing', true);
 

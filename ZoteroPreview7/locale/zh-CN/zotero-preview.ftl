@@ -15,11 +15,11 @@ zotero-preview-settings-position-bottom =
     .label = 侧边栏底部
 
 zotero-preview-settings-display = 展示
-zotero-preview-settings-whatToShow-both =
+zotero-preview-settings-whattoshow-both =
     .label = 以下两者都展示
-zotero-preview-settings-whatToShow-bib =
+zotero-preview-settings-whattoshow-bib =
     .label = 仅展示参考文献样式
-zotero-preview-settings-whatToShow-intext =
+zotero-preview-settings-whattoshow-intext =
     .label = 仅展示正文内引用样式
 
 zotero-preview-settings-display-space = 字体大小与行间距

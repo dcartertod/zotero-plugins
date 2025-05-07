@@ -11,7 +11,7 @@
 <vbox id="zotero-prefpane-zotero-preview" onload="Zotero.zoteropreview.Prefs.init();">
     <groupbox>
         <vbox>
-            <label><html:h2 data-l10n-id="zotero-preview-settings-title"></html:h2></label>
+           <label><html:h2 data-l10n-id="zotero-preview-settings-title"></html:h2></label>
             <hbox>
                 <menulist id="zotero-preview-style-menulist" native="true" 
                     preference="extensions.zoteropreview.citationstyle" 
@@ -22,28 +22,31 @@
             </hbox>
         </vbox>
     </groupbox>
+    
     <groupbox>
         <label><html:h2 data-l10n-id="zotero-preview-settings-position"></html:h2></label>
         <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.position">
             <radio id="extensions-zoteropreview-position-top" value="zotero-item-pane-header" data-l10n-id="zotero-preview-settings-position-top" 
                     onclick="Zotero.zoteropreview.addToWindow('zotero-item-pane-header');"/>
             <radio id="extensions-zoteropreview-position-afterInfo" value="zotero-editpane-item-box" data-l10n-id="zotero-preview-settings-position-afterinfo" 
-                    onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-item-box');"/>
+                    onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-info-box');"/>
             <radio id="extensions-zoteropreview-position-bottom" value="zotero-editpane-related" data-l10n-id="zotero-preview-settings-position-bottom"
                     onclick="Zotero.zoteropreview.addToWindow('zotero-editpane-related');"/>
         </radiogroup>
     </groupbox>
+    <!-- 
     <groupbox>
         <label><html:h2 data-l10n-id="zotero-preview-settings-display"></html:h2></label>
-        <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.whatToShow">
-            <radio id="extensions-zoteropreview-whatToShow-both" value="zpboth" data-l10n-id="zotero-preview-settings-whatToShow-both" 
+        <radiogroup native="true" id="extensions-zoteropreview-position" preference="extensions.zoteropreview.whattoshow">
+            <radio id="extensions-zoteropreview-whattoshow-both" value="zpboth" data-l10n-id="zotero-preview-settings-whattoshow-both" 
                     onclick="Zotero.zoteropreview.getCitationPreview('zpboth');"/>
-            <radio id="extensions-zoteropreview-whatToShow-bib" value="zpbib" data-l10n-id="zotero-preview-settings-whatToShow-bib"
+            <radio id="extensions-zoteropreview-whattoshow-bib" value="zpbib" data-l10n-id="zotero-preview-settings-whattoshow-bib"
                     onclick="Zotero.zoteropreview.getCitationPreview('zpbib');"/>
-            <radio id="extensions-zoteropreview-whatToShow-intext" value="zpintext" data-l10n-id="zotero-preview-settings-whatToShow-intext" 
+            <radio id="extensions-zoteropreview-whattoshow-intext" value="zpintext" data-l10n-id="zotero-preview-settings-whattoshow-intext" 
                     onclick="Zotero.zoteropreview.getCitationPreview('zpintext');"/>
         </radiogroup>
     </groupbox>
+-->
 
     <groupbox>
         <label><html:h2 data-l10n-id="zotero-preview-settings-display-space"></html:h2></label>
