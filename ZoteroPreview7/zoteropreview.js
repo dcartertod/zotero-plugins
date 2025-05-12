@@ -47,12 +47,12 @@ Zotero.zoteropreview = {
 				positionpref = Zotero.Prefs.get('extensions.zoteropreview.position', true);
 			}
 
-			this.log(positionpref);
+			this.log("positionpref:" + positionpref);
 
 			var mainDocument = Zotero.getActiveZoteroPane().document;
 
 			var target = mainDocument.getElementById(positionpref);
-			this.log(target);
+			this.log("target:" + target);
 
 			var zpdivContainer = mainDocument.getElementById('zotero-preview-container');
 			Zotero.debug('zpdivContainer done');
@@ -110,7 +110,11 @@ Zotero.zoteropreview = {
 			// this.addIcon();
 			this.log('store')
 
-			this.getCitationPreview('addtowindow');		
+			try {
+				this.getCitationPreview('addtowindow');		
+			} catch (error) {
+				this.log('error in getCitationPreview: ' + error);
+			}
 				
 		} catch (error) {
 			this.log('could not add the item pane header thing');
@@ -121,7 +125,7 @@ Zotero.zoteropreview = {
 		var windows = Zotero.getMainWindows();
 		for (let win of windows) {
 			if (!win.ZoteroPane) continue;
-			this.addToWindow(win);
+			this.addToWindow();
 		}
 	},
 	
@@ -159,17 +163,27 @@ Zotero.zoteropreview = {
 	async main() {
 		// this.log('adding notifier');
 		this._notifierID = Zotero.Notifier.registerObserver(this, ['item','itemtree'], 'itemBox');
-		// this.log(this._notifierID);
+		this.log(this._notifierID);
 		
 		// Retrieve a global pref
-		this.log(`Main: Format is ${Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true)}`);
-		// this.addToAllWindows();
-		if(Zotero.getActiveZoteroPane()) {
-			var doc = Zotero.getActiveZoteroPane().document;
-			doc.addEventListener("select", function(){
-				//Zotero.debug('zoteropreview: select');
-				Zotero.zoteropreview.getCitationPreview('select');
-			});
+		try {
+			this.log(`Main: Format is ${Zotero.Prefs.get('extensions.zoteropreview.citationstyle', true)}`);
+			this.addToAllWindows();
+			if(Zotero.getActiveZoteroPane()) {
+			 	var doc = Zotero.getActiveZoteroPane().document;
+				 // ZoteroPane.itemsView.onSelect.addListener(() => Zotero.zoteropreview.getCitationPreview('select'));
+			 	doc.addEventListener("select", function(){
+					Zotero.zoteropreview.log('select');
+					try {
+						Zotero.zoteropreview.getCitationPreview('select');
+					} catch (error) {
+						Zotero.zoteropreview.log('select: ' + error);
+					}
+			 	});
+			}
+		}
+		catch(err){
+			this.log(err);
 		}
 	},
 
@@ -305,7 +319,7 @@ Zotero.zoteropreview = {
 				// 	return;
 				// }
 				this.currentItem = msg;
-				msg = msg.replace('</div>', clipboard + "</div>");
+				// msg = msg.replace('</div>', clipboard + "</div>");
 			}
 
 			// msg =  '<h4 style="border-bottom:1px solid #eeeeee">' + style.title + "</h4>" + msg;

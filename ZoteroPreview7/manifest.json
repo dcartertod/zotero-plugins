@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "ZoteroPreview",
-	"version": "0.8.0",
-	"description": "Citation preview pane for Zotero.",
+	"name": "ZoteroPreview (discontinued)",
+	"version": "0.8.2",
+	"description": "Citation preview pane for Zotero. In Zotero 7, this is now built-in by right-clicking on the title in the item pane. In Zotero 7.0.15 something broke that is hard to fix, but at the same time broke key functionality, so I am, at least for now, disabling it.",
 	"homepage_url": "https://github.com/dcartertod/zotero-plugins",
 	"applications": {
 		"zotero": {

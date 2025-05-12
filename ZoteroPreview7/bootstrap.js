@@ -4,7 +4,7 @@ if (typeof Zotero == 'undefined')
 }
 
 function log(msg) {
-	Zotero.debug("zoteropreview 0.1: " + msg);
+	Zotero.debug("zoteropreview: " + msg);
 }
 
 function install() {
@@ -14,6 +14,7 @@ function install() {
 async function startup({ id, version, rootURI }) {
 	log("Starting " + version);
 	Zotero.debug("Starting " + version);
+	return;
 	
 	Zotero.debug("load sub script " + version);
 	Services.scriptloader.loadSubScript(rootURI + 'zoteropreview.js');
@@ -29,11 +30,16 @@ async function startup({ id, version, rootURI }) {
 
 	Zotero.debug("Add to windows " + version);
 	Zotero.zoteropreview.addToWindow();
-	await Zotero.zoteropreview.main();
+	try {
+		await Zotero.zoteropreview.main();
+	}
+	catch (err) {
+		Zotero.zoteropreview.log(err);
+	}
 }
 
 function onMainWindowLoad({ window }) {
-	Zotero.zoteropreview.addToWindow(window);
+	Zotero.zoteropreview.addToWindow();
 }
 
 function onMainWindowUnload({ window }) {
@@ -64,7 +70,7 @@ function removeFromAllWindows() {
 
 function shutdown() {
 	log("Shutting down ");
-	Zotero.Notifier.unregisterObserver(this._notifierID);
+	Zotero.Notifier.unregisterObserver(Zotero.zoteropreview._notifierID);
 	this.removeFromAllWindows();
 	Zotero.zoteropreview = undefined;
 }
