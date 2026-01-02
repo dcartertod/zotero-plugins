@@ -4,7 +4,7 @@ if (typeof Zotero == 'undefined')
 }
 
 function log(msg) {
-	Zotero.debug("Zotero Abstract Cleaner 0.1: " + msg);
+	Zotero.debug("Zotero Abstract Cleaner 0.1.1: " + msg);
 }
 
 function install() {

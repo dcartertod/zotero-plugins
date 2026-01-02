@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "ZoteroAbstractCleaner",
-	"version": "0.1",
+	"version": "0.1.1",
 	"description": "Clean up line endings for Zotero 7.",
 	"homepage_url": "https://github.com/dcartertod/zotero-plugins",
 	"applications": {
